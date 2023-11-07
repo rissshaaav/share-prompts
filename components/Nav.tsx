@@ -28,7 +28,7 @@ const Nav = () => {
                     height={30}
                     className='object-contain'
                 />
-                <p className='logo_text'>Promtopia</p>
+                <p className='logo_text'>Promptopia</p>
             </Link>
             {/* desktop navigation */}
             <div className="sm:flex hidden">
@@ -49,7 +49,7 @@ const Nav = () => {
                             </button>
                             <Link href="/profile">
                                 <Image
-                                    src="/assets/images/logo.svg"
+                                    src={session?.user.image}
                                     alt='profile'
                                     width={37}
                                     height={37}
@@ -61,18 +61,17 @@ const Nav = () => {
                         <>
                             {
                                 providers && Object.values(providers).map(
-                                    (provider: any) => {
-                                        (
-                                            <button
-                                                type='button'
-                                                key={provider.name}
-                                                onClick={() => signIn(provider.id)}
-                                                className='black_btn'
-                                            >
-                                                SignIn
-                                            </button>
-                                        )
-                                    }
+                                    (provider: any) =>(
+                                        <button
+                                            type='button'
+                                            key={provider.name}
+                                            onClick={() => signIn(provider.id)}
+                                            className='black_btn'
+                                        >
+                                            SignIn
+                                        </button>
+                                    )
+
                                 )
                             }
                         </>
@@ -85,7 +84,7 @@ const Nav = () => {
                     session?.user ? (
                         <div className="flex">
                             <Image
-                                src="/assets/images/logo.svg"
+                                src={session?.user.image}
                                 alt='profile'
                                 width={37}
                                 height={37}
